@@ -1,0 +1,1109 @@
+%b6-vLNu_4p#R/A
+PROJETO:
+Plataforma Web Profissional de Fotografia, Portfólio, Galerias e Área de Clientes
+
+MISSÃO
+
+Atue simultaneamente como:
+
+- arquiteto de software web sênior;
+- UX/UI designer especializado em produtos premium;
+- diretor de arte especializado em fotografia;
+- desenvolvedor full-stack;
+- especialista em experiência digital para fotógrafos;
+- especialista em armazenamento e distribuição de imagens;
+- especialista em SEO;
+- especialista em performance web;
+- especialista em segurança, privacidade e LGPD.
+
+Sua missão é PROJETAR E IMPLEMENTAR uma plataforma web profissional para um fotógrafo.
+
+Não trate este projeto como um simples site institucional.
+
+O produto deverá combinar:
+
+1. portfólio profissional;
+2. galeria fotográfica pública;
+3. área privada para clientes;
+4. repositório seguro para entrega de fotografias;
+5. apresentação de eventos;
+6. captação de novos clientes;
+7. divulgação da identidade profissional do fotógrafo;
+8. canal de relacionamento;
+9. espaço para trabalhos artísticos e autorais;
+10. estrutura administrativa para gerenciamento de todo o conteúdo.
+
+REFERÊNCIAS CONCEITUAIS
+
+Estude como referência de experiência e funcionalidades:
+
+- Pixieset
+- Pic-Time
+- Format
+- SmugMug
+- Zenfolio
+- Squarespace Photography
+
+NÃO copie visualmente nenhuma plataforma.
+
+Extraia delas apenas boas práticas de:
+
+- organização;
+- experiência do cliente;
+- apresentação fotográfica;
+- galerias;
+- downloads;
+- privacidade;
+- navegação;
+- responsividade;
+- performance.
+
+O resultado deve possuir identidade própria.
+
+==================================================
+1. CONCEITO VISUAL
+==================================================
+
+A fotografia deverá ser a protagonista absoluta.
+
+Criar uma interface:
+
+- sofisticada;
+- elegante;
+- contemporânea;
+- minimalista;
+- cinematográfica;
+- emocional;
+- extremamente visual.
+
+Evitar aparência de:
+
+- template genérico;
+- rede social;
+- loja virtual;
+- painel empresarial na área pública;
+- site WordPress convencional.
+
+A página deve transmitir imediatamente:
+
+"Este é o trabalho de um fotógrafo profissional."
+
+Usar bastante espaço negativo e permitir que fotografias ocupem grandes áreas da tela.
+
+A interface nunca deve competir visualmente com as fotografias.
+
+==================================================
+2. HOME PAGE
+==================================================
+
+Criar uma Home de forte impacto visual.
+
+Hero Section:
+
+- fotografia em tela cheia;
+- possibilidade de slideshow;
+- transições suaves;
+- nome/logotipo do fotógrafo;
+- pequena assinatura profissional;
+- CTA discreto.
+
+Exemplo:
+
+[NOME DO FOTÓGRAFO]
+
+Fotografia • Histórias • Momentos
+
+[Conheça meu trabalho]
+
+Permitir configurar fotografias diferentes para o Hero.
+
+Opcionalmente utilizar imagens aleatórias ou selecionadas como destaques.
+
+Logo abaixo apresentar:
+
+EVENTOS
+CASAMENTOS
+ENSAIOS
+FESTAS & VIDA NOTURNA
+AUTORAL
+ASTROFOTOGRAFIA
+
+Cada categoria deve utilizar uma fotografia de destaque.
+
+==================================================
+3. EXPERIÊNCIA "MOMENTOS"
+==================================================
+
+Criar uma seção especial chamada:
+
+MOMENTOS
+
+Não será apenas uma galeria.
+
+Será uma narrativa fotográfica.
+
+Cada trabalho poderá possuir:
+
+- título;
+- data;
+- local;
+- pequena história;
+- sequência de fotografias;
+- imagens horizontais;
+- imagens verticais;
+- mosaicos;
+- fotografias em tela cheia.
+
+Exemplo:
+
+"Uma noite para lembrar"
+
+Casamento de Ana & Rafael
+12 de setembro
+
+seguido da narrativa visual.
+
+O visitante deverá sentir que está acompanhando a história através das fotografias.
+
+==================================================
+4. PORTFÓLIO
+==================================================
+
+Criar página:
+
+PORTFÓLIO
+
+Filtros:
+
+Todos
+Casamentos
+Ensaios
+Eventos
+Festas
+Vida Noturna
+Retratos
+Paisagens
+Astrofotografia
+Autorais
+
+As categorias devem ser configuráveis pelo administrador.
+
+Permitir layouts:
+
+- masonry;
+- editorial;
+- grid;
+- fullscreen.
+
+Ao selecionar uma fotografia:
+
+abrir Lightbox imersivo.
+
+Permitir:
+
+- próxima;
+- anterior;
+- zoom;
+- tela cheia;
+- informações opcionais;
+- compartilhamento quando autorizado.
+
+==================================================
+5. EVENTOS
+==================================================
+
+Criar sistema específico para eventos.
+
+Página:
+
+/eventos
+
+Exibir:
+
+fotografia de capa
+nome do evento
+data
+local
+
+Exemplo:
+
+Festival de Inverno
+14 AGO 2026
+Campo Mourão
+
+[VER GALERIA]
+
+Permitir pesquisar por:
+
+- evento;
+- data;
+- categoria;
+- local.
+
+Eventos antigos poderão permanecer como portfólio público.
+
+==================================================
+6. CASAMENTOS
+==================================================
+
+Criar apresentação diferenciada para casamentos.
+
+Cada casamento deverá possuir uma página própria.
+
+Exemplo:
+
+ANA & RAFAEL
+
+12 Setembro 2026
+
+Preparativos
+Cerimônia
+Recepção
+Festa
+
+Criar narrativa visual contínua.
+
+Priorizar emoção e storytelling.
+
+==================================================
+7. ENSAIOS
+==================================================
+
+Criar galerias específicas para:
+
+- ensaio individual;
+- casal;
+- família;
+- gestante;
+- editorial;
+- retrato profissional;
+- outros.
+
+==================================================
+8. ASTROFOTOGRAFIA
+==================================================
+
+Criar uma área visualmente diferenciada:
+
+CÉU & UNIVERSO
+
+ou
+
+ASTROFOTOGRAFIA
+
+Exibir trabalhos envolvendo:
+
+- Lua;
+- estrelas;
+- Via Láctea;
+- fenômenos astronômicos;
+- paisagens noturnas;
+- céu profundo quando disponível.
+
+Permitir opcionalmente informar:
+
+local
+data
+equipamento
+câmera
+lente
+tempo de exposição
+ISO
+observações do fotógrafo.
+
+Essa área deve funcionar também como espaço artístico.
+
+==================================================
+9. ÁREA DO CLIENTE
+==================================================
+
+Esta será uma das partes mais importantes do sistema.
+
+Criar:
+
+ÁREA DO CLIENTE
+
+O cliente poderá acessar por:
+
+login
+
+OU
+
+link privado + senha/PIN.
+
+Cada cliente visualizará somente seus trabalhos autorizados.
+
+Exemplo:
+
+Olá, Mariana.
+
+Seu casamento
+12/08/2026
+
+[ABRIR GALERIA]
+
+==================================================
+10. GALERIA PRIVADA
+==================================================
+
+Cada trabalho poderá possuir:
+
+PUBLIC
+PRIVATE
+UNLISTED
+
+PUBLIC:
+visível no portfólio.
+
+PRIVATE:
+somente usuários autorizados.
+
+UNLISTED:
+acessível somente através do link.
+
+Permitir também proteção por senha/PIN.
+
+==================================================
+11. DOWNLOAD DAS FOTOGRAFIAS
+==================================================
+
+O fotógrafo poderá definir por galeria:
+
+download permitido SIM/NÃO.
+
+Quando permitido:
+
+[BAIXAR FOTO]
+
+e
+
+[BAIXAR GALERIA]
+
+Permitir versões:
+
+WEB
+ALTA RESOLUÇÃO
+
+Opcionalmente gerar ZIP para download completo.
+
+O sistema deverá suportar arquivos grandes sem travar o navegador.
+
+Downloads devem usar mecanismos apropriados de armazenamento e transferência.
+
+==================================================
+12. FAVORITOS
+==================================================
+
+Clientes poderão clicar:
+
+♡ FAVORITAR
+
+Criar:
+
+MEUS FAVORITOS
+
+Isso permitirá que o fotógrafo saiba quais fotografias o cliente selecionou.
+
+Exemplo:
+
+Mariana selecionou 37 fotografias.
+
+Permitir exportar a lista dos nomes/IDs dos arquivos selecionados.
+
+==================================================
+13. COMENTÁRIOS
+==================================================
+
+Opcionalmente permitir comentários privados.
+
+Exemplo:
+
+"Gostaria dessa fotografia em preto e branco."
+
+O comentário ficará associado à fotografia específica.
+
+==================================================
+14. CONTATO
+==================================================
+
+Criar página:
+
+VAMOS CONVERSAR?
+
+Campos:
+
+Nome
+WhatsApp
+E-mail
+
+Tipo de trabalho:
+
+Casamento
+Evento
+Ensaio
+Festa
+Corporativo
+Outro
+
+Data prevista
+Cidade
+Mensagem
+
+[ENVIAR]
+
+Permitir botão:
+
+FALAR PELO WHATSAPP
+
+==================================================
+15. SOBRE O FOTÓGRAFO
+==================================================
+
+Criar página:
+
+SOBRE
+
+Não fazer currículo burocrático.
+
+Criar narrativa pessoal.
+
+Exemplo conceitual:
+
+"Fotografar não é simplesmente registrar aquilo que aconteceu.
+
+É guardar aquilo que não poderá acontecer novamente."
+
+Adicionar:
+
+foto do fotógrafo;
+história;
+experiência;
+filosofia;
+áreas de atuação;
+região atendida.
+
+==================================================
+16. REDES SOCIAIS
+==================================================
+
+Integrar:
+
+Instagram
+WhatsApp
+Facebook
+YouTube
+ou outras redes configuráveis.
+
+Permitir compartilhamento controlado das galerias públicas.
+
+==================================================
+17. PAINEL ADMINISTRATIVO
+==================================================
+
+Criar painel privado:
+
+/admin
+
+Dashboard:
+
+Galerias
+Eventos
+Clientes
+Mensagens
+Downloads
+Armazenamento
+Portfólio
+Configurações
+
+==================================================
+18. CRIAÇÃO DE GALERIA
+==================================================
+
+Fluxo extremamente simples:
+
+NOVA GALERIA
+
+Nome
+Cliente
+Categoria
+Evento
+Data
+Local
+Descrição
+
+Privacidade:
+
+Pública
+Privada
+Não listada
+
+Download:
+
+Permitido
+Bloqueado
+
+Marca d'água:
+
+Sim
+Não
+
+Depois:
+
+ARRASTE AS FOTOS AQUI
+
+Suportar upload múltiplo.
+
+Exibir progresso individual e geral do upload.
+
+Permitir pausar/retomar quando tecnicamente possível.
+
+==================================================
+19. GERENCIADOR DE FOTOGRAFIAS
+==================================================
+
+Permitir:
+
+upload;
+exclusão;
+ordenação;
+seleção múltipla;
+definir capa;
+alterar categoria;
+mover entre galerias;
+editar metadados;
+marcar como destaque;
+publicar/despublicar.
+
+NUNCA alterar o arquivo original sem autorização explícita.
+
+==================================================
+20. PROCESSAMENTO DAS IMAGENS
+==================================================
+
+Manter arquivo original protegido.
+
+Gerar versões derivadas:
+
+thumbnail
+preview
+web
+alta resolução
+
+Preferir formatos modernos quando compatíveis:
+
+WebP
+AVIF
+
+Preservar original.
+
+Aplicar lazy loading.
+
+Utilizar imagens responsivas conforme tamanho da tela.
+
+==================================================
+21. MARCA D'ÁGUA
+==================================================
+
+Permitir configurar:
+
+logo;
+texto;
+posição;
+opacidade;
+tamanho.
+
+A marca d'água deve aparecer somente nas versões configuradas.
+
+Nunca modificar permanentemente o arquivo original.
+
+==================================================
+22. BUSCA
+==================================================
+
+Criar busca por:
+
+evento
+galeria
+categoria
+data
+local
+
+Na área administrativa:
+
+cliente
+arquivo
+evento
+galeria.
+
+==================================================
+23. SEO
+==================================================
+
+Implementar SEO técnico corretamente.
+
+Criar:
+
+title;
+description;
+Open Graph;
+Twitter Cards;
+canonical URLs;
+sitemap.xml;
+robots.txt;
+dados estruturados quando apropriados.
+
+Cada evento público deverá possuir URL própria.
+
+Exemplo:
+
+/eventos/festival-de-inverno-2026
+
+Cada casamento:
+
+/casamentos/ana-e-rafael
+
+Cada ensaio:
+
+/ensaios/nome-do-ensaio
+
+Criar URLs amigáveis.
+
+==================================================
+24. COMPARTILHAMENTO SOCIAL
+==================================================
+
+Quando uma galeria for compartilhada:
+
+WhatsApp
+Facebook
+Instagram/links compatíveis
+mensageiros
+
+mostrar automaticamente:
+
+fotografia de capa;
+nome;
+descrição;
+nome do fotógrafo.
+
+==================================================
+25. MOBILE FIRST
+==================================================
+
+A maior parte da experiência deverá funcionar perfeitamente no celular.
+
+Projetar especificamente para:
+
+smartphone
+tablet
+notebook
+desktop
+telas grandes.
+
+Não apenas reduzir a versão desktop.
+
+Criar experiência realmente responsiva.
+
+Gestos móveis:
+
+swipe;
+pinch/zoom quando apropriado;
+toque;
+navegação natural.
+
+==================================================
+26. PERFORMANCE
+==================================================
+
+Fotografia envolve arquivos grandes.
+
+Portanto performance é requisito crítico.
+
+Implementar:
+
+lazy loading;
+thumbnails;
+responsive images;
+CDN;
+cache;
+compressão;
+paginação ou carregamento progressivo;
+pré-carregamento inteligente.
+
+NUNCA carregar centenas de fotografias originais simultaneamente.
+
+Objetivo:
+
+mostrar rapidamente as primeiras imagens enquanto o restante carrega progressivamente.
+
+==================================================
+27. ARMAZENAMENTO
+==================================================
+
+Separar:
+
+BANCO DE DADOS
+
+de
+
+ARMAZENAMENTO DAS IMAGENS.
+
+Utilizar arquitetura compatível com object storage.
+
+Exemplos conceituais:
+
+S3
+Cloudflare R2
+Supabase Storage
+ou solução equivalente.
+
+Não armazenar grandes fotografias diretamente no banco SQL.
+
+==================================================
+28. BANCO DE DADOS
+==================================================
+
+Projetar entidades para:
+
+Users
+Clients
+Galleries
+Photos
+Events
+Categories
+Favorites
+Comments
+Downloads
+Messages
+Permissions
+Settings
+
+Utilizar IDs seguros.
+
+Registrar timestamps.
+
+Implementar relacionamentos corretamente.
+
+==================================================
+29. SEGURANÇA
+==================================================
+
+Implementar:
+
+autenticação segura;
+hash de senhas;
+controle de sessão;
+rate limiting;
+proteção contra acesso indevido;
+validação de uploads;
+URLs assinadas para arquivos privados;
+controle de permissões;
+logs administrativos.
+
+Uma galeria privada NUNCA poderá ser acessada apenas descobrindo sua URL.
+
+==================================================
+30. LGPD
+==================================================
+
+Como fotografias podem envolver pessoas identificáveis, considerar privacidade desde a arquitetura.
+
+Permitir:
+
+publicar/despublicar galerias;
+controlar acesso;
+remover conteúdo;
+registrar consentimentos quando necessário;
+política de privacidade;
+termos de uso;
+controle administrativo dos dados.
+
+Não assumir automaticamente que uma fotografia entregue a um cliente pode ser publicada no portfólio público.
+
+==================================================
+31. EXPERIÊNCIA DO VISITANTE
+==================================================
+
+O visitante deve conseguir em poucos segundos:
+
+entender quem é o fotógrafo;
+ver seus melhores trabalhos;
+identificar seus estilos;
+entrar em contato;
+solicitar orçamento.
+
+Não sobrecarregar a interface.
+
+==================================================
+32. EXPERIÊNCIA DO CLIENTE
+==================================================
+
+O cliente deve conseguir:
+
+receber um link;
+abrir;
+autenticar-se quando necessário;
+visualizar suas fotos;
+favoritar;
+comentar quando permitido;
+baixar uma foto;
+baixar todas.
+
+Tudo com o menor número possível de etapas.
+
+==================================================
+33. EXPERIÊNCIA DO FOTÓGRAFO
+==================================================
+
+O fotógrafo deverá conseguir administrar o site sem conhecimento técnico.
+
+Fluxo ideal:
+
+Login
+→ Nova galeria
+→ Upload
+→ Configurar privacidade
+→ Publicar
+→ Copiar link
+→ Enviar ao cliente.
+
+==================================================
+34. PÁGINA 404
+==================================================
+
+Até páginas de erro devem manter a identidade fotográfica.
+
+Exemplo:
+
+"Parece que esse momento escapou da lente."
+
+[Voltar para o início]
+
+==================================================
+35. RECURSO ESPECIAL — DESTAQUES
+==================================================
+
+Criar sistema:
+
+DESTAQUE DA SEMANA
+
+ou
+
+HISTÓRIA EM DESTAQUE.
+
+O fotógrafo poderá selecionar um evento ou ensaio para aparecer temporariamente na Home.
+
+==================================================
+36. BASTIDORES
+==================================================
+
+Preparar arquitetura para uma futura seção:
+
+BASTIDORES
+
+Permitindo:
+
+texto;
+fotografia;
+vídeo;
+histórias sobre trabalhos;
+dicas;
+experiências.
+
+Isso poderá ajudar posteriormente no SEO e na construção da marca profissional.
+
+==================================================
+37. ANALYTICS
+==================================================
+
+Criar métricas respeitando privacidade.
+
+Dashboard poderá mostrar:
+
+visitas;
+galerias mais vistas;
+origem aproximada do tráfego;
+downloads;
+favoritos;
+contatos recebidos.
+
+Evitar coleta desnecessária de dados pessoais.
+
+==================================================
+38. IDENTIDADE VISUAL
+==================================================
+
+Criar sistema de design consistente.
+
+Tipografia editorial sofisticada.
+
+Combinar, quando apropriado:
+
+fonte serifada elegante para títulos
+
++
+
+sans-serif limpa para interface.
+
+Usar animações extremamente discretas.
+
+Nada deve distrair da fotografia.
+
+==================================================
+39. TEMA
+==================================================
+
+Preparar:
+
+Dark Mode
+Light Mode
+
+e permitir ao fotógrafo escolher um tema principal.
+
+Para fotografia noturna e eventos, considerar uma identidade escura sofisticada como opção padrão.
+
+==================================================
+40. ARQUITETURA
+==================================================
+
+Utilizar arquitetura modular.
+
+Separar claramente:
+
+Frontend
+Backend/API
+Database
+Storage
+Authentication
+Image Processing
+Admin
+Public Website
+Client Area
+
+Evitar acoplamento desnecessário.
+
+==================================================
+41. ESCALABILIDADE
+==================================================
+
+O projeto deverá funcionar inicialmente para um fotógrafo individual.
+
+Entretanto, a arquitetura não deverá impedir crescimento futuro para:
+
+assistentes;
+segundo fotógrafo;
+estúdio;
+múltiplos usuários;
+milhares de galerias;
+centenas de milhares de fotografias.
+
+Não implementar complexidade desnecessária agora, apenas evitar decisões arquitetônicas que impeçam crescimento.
+
+==================================================
+42. NÃO IMPLEMENTAR E-COMMERCE NESTA FASE
+==================================================
+
+O objetivo atual NÃO é vender fotografias.
+
+Portanto:
+
+não criar checkout;
+não criar carrinho;
+não criar gateway de pagamento.
+
+Entretanto, estruturar o sistema de maneira que futuramente possa existir:
+
+Venda de impressões
+Licenciamento
+Downloads pagos
+Álbuns
+Serviços fotográficos
+
+sem necessidade de reconstruir a aplicação.
+
+==================================================
+43. ACESSIBILIDADE
+==================================================
+
+Garantir:
+
+contraste adequado;
+navegação por teclado;
+alt text;
+ARIA quando necessário;
+foco visível;
+interface compatível com leitores de tela.
+
+A estética nunca deverá comprometer acessibilidade.
+
+==================================================
+44. CRITÉRIOS DE QUALIDADE
+==================================================
+
+Antes de considerar qualquer módulo concluído:
+
+testar desktop;
+testar smartphone;
+testar tablet;
+testar galerias grandes;
+testar conexão lenta;
+testar autenticação;
+testar permissões;
+testar downloads;
+testar uploads interrompidos;
+testar URLs privadas;
+testar imagens verticais e horizontais.
+
+==================================================
+45. REGRA DE IMPLEMENTAÇÃO
+==================================================
+
+Não tente construir todo o sistema de uma vez.
+
+Primeiro:
+
+1. analisar requisitos;
+2. definir arquitetura;
+3. definir banco;
+4. definir armazenamento;
+5. criar design system;
+6. criar protótipo da Home;
+7. validar experiência visual;
+8. implementar portfólio;
+9. implementar galerias;
+10. implementar autenticação;
+11. implementar área do cliente;
+12. implementar downloads;
+13. implementar painel administrativo;
+14. implementar otimizações;
+15. executar testes.
+
+A cada etapa:
+
+IMPLEMENTAR
+→ TESTAR
+→ VALIDAR
+→ DOCUMENTAR
+→ PROSSEGUIR.
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+O produto final não deverá parecer:
+
+"um site onde um fotógrafo colocou algumas fotos."
+
+Deverá parecer:
+
+UMA EXPERIÊNCIA DIGITAL CRIADA EM TORNO DO TRABALHO DO FOTÓGRAFO.
+
+O visitante deve sair pensando:
+
+"Quero esse fotógrafo no meu evento."
+
+E o cliente existente deve pensar:
+
+"Foi muito fácil e agradável receber minhas fotografias."
+
+A plataforma deverá transformar fotografia, tecnologia e identidade profissional em uma única experiência.

@@ -1,0 +1,25 @@
+# Dependencies and framework output
+node_modules/
+.next/
+.next-dev/
+out/
+coverage/
+*.tsbuildinfo
+
+# Environment and local service configuration
+.env
+.env.*
+!.env.example
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Local archives and project material not intended for source control
+*.zip
+/projetos/fotos/
+/projetos/arquivo-demo-antigo/
+/projetos/fontes-editoriais-geradas/
