@@ -17,7 +17,11 @@ export async function PortfolioGallery({ slug, fallback, showAllPhotos = false }
     console.error(`[portfolio:${slug}] Gallery lookup failed: ${galleryError.code}`);
     return <>{fallback}</>;
   }
-  if (!gallery) return <>{fallback}</>;
+  if (!gallery) {
+    const hostname = process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname : 'missing';
+    console.error(`[portfolio:${slug}] Public gallery was not found on ${hostname}.`);
+    return <>{fallback}</>;
+  }
   const { data: photos, error: photosError } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
   if (photosError) {
     console.error(`[portfolio:${slug}] Photo lookup failed: ${photosError.code}`);
