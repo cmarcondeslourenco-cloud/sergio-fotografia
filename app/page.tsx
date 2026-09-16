@@ -1,15 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatedHero } from '@/components/home/AnimatedHero';
 import { PortfolioGallery } from '@/components/gallery/PortfolioGallery';
-import { demoPhotos, normalizeCategory, type PortfolioCategory } from '@/lib/demo-photos';
+import { normalizeCategory, type PortfolioCategory } from '@/lib/demo-photos';
+import { portfolioGalleries } from '@/lib/portfolio/config';
 
-const homeCategories: Array<{ category: PortfolioCategory; slug: string }> = [
-  { category: 'Casamentos', slug: 'casamentos' },
-  { category: 'Ensaios', slug: 'ensaios' },
-  { category: 'Eventos', slug: 'eventos' },
-  { category: 'Astrofotografia', slug: 'astrofotografia' },
-];
+const homeCategories: Array<{ category: PortfolioCategory; slug: string }> = portfolioGalleries.map(({ title, slug }) => ({ category: title, slug }));
 
 const principles = [
   ['01', 'Presença antes da pose', 'Direção leve para que pessoas e histórias continuem reconhecíveis nas imagens.'],
@@ -60,7 +55,7 @@ export default function HomePage({ searchParams }: { searchParams?: { categoria?
                 }`}
               >
                 <div className="h-full [&>div]:h-full [&>div]:aspect-auto [&_img]:transition [&_img]:duration-700 [&_img]:ease-out [&_img]:group-hover:scale-[1.035]">
-                  <PortfolioGallery slug={slug} fallback={<Image src={demoPhotos.find((photo) => photo.category === category)?.src ?? '/editorial/casamento-hero.webp'} alt={category} fill sizes={index === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw'} className="object-contain" />} />
+                  <PortfolioGallery slug={slug} fallback={<div className="h-full bg-surface" aria-hidden="true" />} />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">

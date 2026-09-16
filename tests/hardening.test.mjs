@@ -58,6 +58,21 @@ test('ativos editoriais existem e imagens do equipamento saíram da pasta públi
   await assert.rejects(access('public/demo/01.webp'));
 });
 
+test('home e categorias usam a mesma fonte de galerias publicas', async () => {
+  const home = await readFile('app/page.tsx', 'utf8');
+  const landing = await readFile('components/gallery/CategoryLanding.tsx', 'utf8');
+  const gallery = await readFile('components/gallery/PortfolioGallery.tsx', 'utf8');
+
+  assert.match(home, /portfolioGalleries/);
+  assert.match(home, /<PortfolioGallery slug={slug}/);
+  assert.doesNotMatch(home, /demoPhotos/);
+  assert.match(home, /href=\{`\/\$\{slug\}`\}/);
+  assert.match(landing, /<PortfolioGallery slug={slug} showAllPhotos/);
+  assert.doesNotMatch(landing, /DemoGallery|demoPhotos/);
+  assert.match(gallery, /\.eq\('published', true\)/);
+  assert.match(gallery, /noStore\(\)/);
+});
+
 test('lightbox restaura foco e impede rolagem ao abrir', async () => {
   const source = await readFile('components/lightbox/Lightbox.tsx', 'utf8');
   assert.match(source, /previousFocus/);

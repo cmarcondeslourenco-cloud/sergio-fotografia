@@ -23,3 +23,5 @@ Thumbs.db
 /projetos/fotos/
 /projetos/arquivo-demo-antigo/
 /projetos/fontes-editoriais-geradas/
+.vercel
+.env*
