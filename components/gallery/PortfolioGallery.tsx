@@ -8,10 +8,21 @@ import { PublicPortfolioPhotos } from './PublicPortfolioPhotos';
 export async function PortfolioGallery({ slug, fallback, showAllPhotos = false }: { slug: string; fallback: ReactNode; showAllPhotos?: boolean }) {
   noStore();
   const admin = createSupabaseAdminClient();
-  if (!admin) return <>{fallback}</>;
-  const { data: gallery } = await admin.from('galleries').select('id').eq('slug', slug).eq('visibility', 'public').lte('published_at', new Date().toISOString()).maybeSingle();
+  if (!admin) {
+    console.error(`[portfolio:${slug}] Supabase admin client is not configured.`);
+    return <>{fallback}</>;
+  }
+  const { data: gallery, error: galleryError } = await admin.from('galleries').select('id').eq('slug', slug).eq('visibility', 'public').lte('published_at', new Date().toISOString()).maybeSingle();
+  if (galleryError) {
+    console.error(`[portfolio:${slug}] Gallery lookup failed: ${galleryError.code}`);
+    return <>{fallback}</>;
+  }
   if (!gallery) return <>{fallback}</>;
-  const { data: photos } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
+  const { data: photos, error: photosError } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
+  if (photosError) {
+    console.error(`[portfolio:${slug}] Photo lookup failed: ${photosError.code}`);
+    return <>{fallback}</>;
+  }
   const materialized = await Promise.all((photos ?? []).map(async (photo) => {
     if (!photo.path_preview) return null;
     const signed = await admin.storage.from('photos-private').createSignedUrl(photo.path_preview, 3600);
