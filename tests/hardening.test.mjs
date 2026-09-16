@@ -26,6 +26,28 @@ test('contato possui validação, honeypot e limite de envio', async () => {
   assert.match(route, /contactSchema\.safeParse/);
 });
 
+test('acesso de galeria permite regenerar e revogar sem expor chaves', async () => {
+  const route = await readFile('app/api/admin/gallery-access/route.ts', 'utf8');
+  const settings = await readFile('components/admin/GalleryDeliverySettings.tsx', 'utf8');
+  assert.match(route, /action === 'revoke'/);
+  assert.match(route, /action === 'regenerate'/);
+  assert.match(route, /gallery_access.*delete/s);
+  assert.match(settings, /navigator\.clipboard\.writeText/);
+  assert.doesNotMatch(route, /SUPABASE_SERVICE_ROLE_KEY/);
+});
+
+test('Home concentra os CTAs e os filtros do portfólio', async () => {
+  const home = await readFile('app/page.tsx', 'utf8');
+  const portfolio = await readFile('app/portfolio/page.tsx', 'utf8');
+  assert.match(home, /href="\/contato"/);
+  assert.match(home, /href="\/cliente"/);
+  assert.match(home, /Todos/);
+  assert.match(home, /Casamentos/);
+  assert.match(home, /Ensaios/);
+  assert.match(home, /Eventos/);
+  assert.match(portfolio, /redirect\('\/#portfolio'\)/);
+});
+
 test('ativos editoriais existem e imagens do equipamento saíram da pasta pública', async () => {
   await Promise.all([
     access('public/editorial/casamento-hero.webp'),

@@ -5,7 +5,7 @@ import { validateImageInput } from '@/lib/image/validation';
 import { originalObjectPath } from '@/lib/storage/paths';
 import { createSupabaseBrowserClient } from '@/lib/supabase/config';
 
-export function GalleryUpload({ galleryId }: { galleryId: string }) {
+export function GalleryUpload({ galleryId, maxPhotos, initialPhotoCount = 0 }: { galleryId: string; maxPhotos?: number; initialPhotoCount?: number }) {
   const [files, setFiles] = useState<File[]>([]);
   const [inputKey, setInputKey] = useState(0);
   const [status, setStatus] = useState('');
@@ -15,6 +15,8 @@ export function GalleryUpload({ galleryId }: { galleryId: string }) {
 
   function chooseFiles(chosen: File[]) {
     try {
+      const availableSlots = maxPhotos === undefined ? Infinity : Math.max(0, maxPhotos - initialPhotoCount);
+      if (chosen.length > availableSlots) throw new Error(`Esta galeria permite no máximo ${maxPhotos} imagens. Restam ${availableSlots} vaga(s).`);
       chosen.forEach((file) => validateImageInput({ mime: file.type, size: file.size }));
       setFiles(chosen);
       setStatus('');
@@ -42,7 +44,9 @@ export function GalleryUpload({ galleryId }: { galleryId: string }) {
 
     try {
       const existingCover = await client.from('photos').select('id').eq('gallery_id', galleryId).eq('is_cover', true).limit(1);
+      const existingFeatured = await client.from('photos').select('id').eq('gallery_id', galleryId).eq('is_featured', true).limit(5);
       let needsCover = !existingCover.data?.length;
+      let featuredSlots = Math.max(0, 5 - (existingFeatured.data?.length ?? 0));
 
       for (let index = 0; index < files.length; index += 1) {
         const file = files[index];
@@ -65,11 +69,13 @@ export function GalleryUpload({ galleryId }: { galleryId: string }) {
           format: file.type.replace('image/', ''),
           processing_status: 'pending',
           is_cover: needsCover,
+          is_featured: featuredSlots > 0,
           sort_order: index,
         });
         if (inserted.error) throw new Error(`O arquivo ${file.name} foi enviado, mas não pôde ser cadastrado.`);
 
         needsCover = false;
+        featuredSlots = Math.max(0, featuredSlots - 1);
         uploadedCount += 1;
         setProgress(Math.round((uploadedCount / files.length) * 100));
       }
@@ -119,6 +125,7 @@ export function GalleryUpload({ galleryId }: { galleryId: string }) {
         multiple
         accept="image/jpeg,image/png,image/webp"
         type="file"
+        disabled={maxPhotos !== undefined && initialPhotoCount >= maxPhotos}
         onChange={(event) => chooseFiles(Array.from(event.target.files ?? []))}
         className="mt-7 block w-full border border-dashed border-white/15 p-4 text-sm text-zinc-400 file:mr-4 file:border-0 file:bg-gold file:px-4 file:py-3 file:text-xs file:font-semibold file:uppercase file:tracking-[0.12em] file:text-ink"
       />

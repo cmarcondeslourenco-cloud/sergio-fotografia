@@ -26,7 +26,7 @@ export function DemoGallery({ photos = demoPhotos }: { photos?: DemoPhoto[] }) {
               height={photo.height}
               priority={index === 0}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="h-auto w-full transition duration-700 ease-out group-hover:scale-[1.025]"
+              className="h-auto w-full"
             />
             <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-5 pb-5 pt-14 opacity-100 transition duration-300 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus-visible:translate-y-0 sm:group-focus-visible:opacity-100">
               <span className="block text-[10px] uppercase tracking-[0.18em] text-gold">{photo.category}</span>

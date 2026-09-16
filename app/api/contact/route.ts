@@ -51,5 +51,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Não foi possível registrar sua mensagem agora.' }, { status: 502 });
   }
 
+  console.info('Novo contato recebido para o fotógrafo', { name, workType, email: email || undefined });
+
   return NextResponse.json({ ok: true }, { status: 201 });
 }

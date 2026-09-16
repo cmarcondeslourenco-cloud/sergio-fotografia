@@ -1,0 +1,12 @@
+'use client';
+
+import { useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import { createSupabaseBrowserClient } from '@/lib/supabase/config';
+
+export function GallerySettings({ galleryId, initialTitle, initialSlug, initialVisibility }: { galleryId: string; initialTitle: string; initialSlug: string; initialVisibility: 'private' | 'unlisted' | 'public' }) {
+  const router = useRouter();
+  const [title, setTitle] = useState(initialTitle); const [slug, setSlug] = useState(initialSlug); const [visibility, setVisibility] = useState(initialVisibility); const [status, setStatus] = useState(''); const [busy, setBusy] = useState(false);
+  async function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); const client = createSupabaseBrowserClient(); if (!client) { setStatus('Erro: Supabase não configurado.'); return; } setBusy(true); setStatus(''); const { error } = await client.from('galleries').update({ title: title.trim(), slug: slug.trim().toLowerCase(), visibility, published_at: visibility === 'public' ? new Date().toISOString() : null }).eq('id', galleryId); if (error) setStatus('Erro: não foi possível salvar as alterações.'); else { setStatus('Alterações salvas.'); router.refresh(); } setBusy(false); }
+  return <section className="mt-10 border border-white/10 bg-surface p-6 md:p-8"><p className="eyebrow">Configurações</p><h2 className="mt-3 font-display text-3xl text-linen">Editar galeria</h2><form onSubmit={submit} className="mt-6 grid gap-4 md:grid-cols-3"><label className="text-sm text-zinc-300">Título<input required value={title} onChange={(event) => setTitle(event.target.value)} className="field mt-2" /></label><label className="text-sm text-zinc-300">Endereço<input required pattern="[a-z0-9-]+" value={slug} onChange={(event) => setSlug(event.target.value.replace(/[^a-z0-9-]/g, '').toLowerCase())} className="field mt-2" /></label><label className="text-sm text-zinc-300">Visibilidade<select value={visibility} onChange={(event) => setVisibility(event.target.value as typeof visibility)} className="field mt-2"><option value="private">Privada</option><option value="unlisted">Não listada</option><option value="public">Pública</option></select></label><button type="submit" disabled={busy} className="button-secondary md:col-span-3 md:w-fit">{busy ? 'Salvando…' : 'Salvar alterações'}</button></form>{status && <p role="status" className={`mt-4 text-sm ${status.startsWith('Erro:') ? 'text-red-300' : 'text-emerald-300'}`}>{status}</p>}</section>;
+}

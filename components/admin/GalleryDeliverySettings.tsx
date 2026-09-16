@@ -45,24 +45,44 @@ export function GalleryDeliverySettings({
     }
   }
 
-  async function generate() {
+  async function generate(action: 'create' | 'regenerate' = 'create') {
     setBusy(true);
     setStatus('');
     try {
       const response = await fetch('/api/admin/gallery-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ galleryId }),
+        body: JSON.stringify({ galleryId, action }),
       });
       const data = await response.json().catch(() => ({})) as { token?: string; error?: string };
       if (!response.ok || !data.token) throw new Error(data.error ?? 'Não foi possível gerar o acesso.');
       setToken(data.token);
       setRevealed(false);
       setStatusType('success');
-      setStatus('Novo acesso privado gerado.');
+      setStatus(action === 'regenerate' ? 'Acesso anterior revogado e novo acesso gerado.' : 'Novo acesso privado gerado.');
     } catch (error) {
       setStatusType('error');
       setStatus(error instanceof Error ? error.message : 'Não foi possível gerar o acesso.');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function revoke() {
+    if (!window.confirm('Revogar o acesso desta galeria? O link atual deixará de funcionar.')) return;
+    setBusy(true);
+    setStatus('');
+    try {
+      const response = await fetch('/api/admin/gallery-access', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ galleryId, action: 'revoke' }) });
+      const data = await response.json().catch(() => ({})) as { error?: string };
+      if (!response.ok) throw new Error(data.error ?? 'Não foi possível revogar o acesso.');
+      setToken('');
+      setRevealed(false);
+      setStatusType('success');
+      setStatus('Acesso revogado.');
+    } catch (error) {
+      setStatusType('error');
+      setStatus(error instanceof Error ? error.message : 'Não foi possível revogar o acesso.');
     } finally {
       setBusy(false);
     }
@@ -106,8 +126,8 @@ export function GalleryDeliverySettings({
             <p className="text-sm font-medium text-zinc-300">Link privado</p>
             <p className="mt-1 text-xs text-zinc-500">Trate este endereço como uma credencial de acesso.</p>
           </div>
-          <button type="button" disabled={busy} onClick={generate} className="button-secondary">
-            {token ? 'Gerar outro acesso' : 'Gerar acesso'}
+          <button type="button" disabled={busy} onClick={() => generate(token ? 'regenerate' : 'create')} className="button-secondary">
+            {token ? 'Regenerar acesso' : 'Criar acesso'}
           </button>
         </div>
         {token && (
@@ -118,6 +138,7 @@ export function GalleryDeliverySettings({
                 {revealed ? 'Ocultar link' : 'Revelar link'}
               </button>
               <button type="button" onClick={copyLink} className="button-primary">Copiar link</button>
+              <button type="button" disabled={busy} onClick={revoke} className="button-secondary">Revogar acesso</button>
             </div>
           </div>
         )}

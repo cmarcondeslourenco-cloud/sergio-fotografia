@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const links = [
   { href: '/portfolio', label: 'Portfólio' },
@@ -11,8 +12,15 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-ink/85 backdrop-blur-xl">
       <nav aria-label="Navegação principal" className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between px-6 md:px-10">
-        <Link href="/" className="relative z-10 font-display text-xl tracking-[0.04em] text-linen md:text-2xl">
-          Fotografia<span className="text-gold">.</span>
+        <Link href="/" className="relative z-10 block w-[10.5rem] sm:w-52" aria-label="Sergio Pagliarini Fotografo — inicio">
+          <Image
+            src="/logo-sergio-pagliarini.png"
+            alt="Sergio Pagliarini Fotografo"
+            className="block h-auto w-full"
+            width={1248}
+            height={832}
+            sizes="(min-width: 640px) 13rem, 10.5rem"
+          />
         </Link>
 
         <div className="hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-300 md:flex">
