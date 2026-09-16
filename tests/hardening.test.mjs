@@ -71,6 +71,7 @@ test('home e categorias usam a mesma fonte de galerias publicas', async () => {
   assert.doesNotMatch(landing, /DemoGallery|demoPhotos/);
   assert.doesNotMatch(gallery, /\.eq\('published', true\)/);
   assert.match(gallery, /noStore\(\)/);
+  assert.match(gallery, /showAllPhotos \? 'grid gap-12' : 'h-full'/);
 });
 
 test('lightbox restaura foco e impede rolagem ao abrir', async () => {
