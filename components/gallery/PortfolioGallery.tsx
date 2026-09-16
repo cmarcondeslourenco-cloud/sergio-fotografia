@@ -11,7 +11,7 @@ export async function PortfolioGallery({ slug, fallback, showAllPhotos = false }
   if (!admin) return <>{fallback}</>;
   const { data: gallery } = await admin.from('galleries').select('id').eq('slug', slug).eq('visibility', 'public').lte('published_at', new Date().toISOString()).maybeSingle();
   if (!gallery) return <>{fallback}</>;
-  const { data: photos } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('published', true).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
+  const { data: photos } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
   const materialized = await Promise.all((photos ?? []).map(async (photo) => {
     if (!photo.path_preview) return null;
     const signed = await admin.storage.from('photos-private').createSignedUrl(photo.path_preview, 3600);
