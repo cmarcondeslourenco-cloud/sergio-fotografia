@@ -14,7 +14,8 @@ const principles = [
 
 const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Astrofotografia'];
 
-export default function HomePage({ searchParams }: { searchParams?: { categoria?: string } }) {
+export default async function HomePage({ searchParams: promisedSearchParams }: { searchParams?: Promise<{ categoria?: string }> }) {
+  const searchParams = await promisedSearchParams;
   const selected = normalizeCategory(searchParams?.categoria);
   const visibleCategories = selected ? homeCategories.filter(({ category }) => category === selected) : homeCategories;
 

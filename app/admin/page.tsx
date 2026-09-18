@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SelectionNotice } from '@/components/admin/SelectionNotice';
 import { GalleryDeleteButton } from '@/components/admin/GalleryDeleteButton';
 import { NewGalleryForm } from '@/components/admin/NewGalleryForm';
 import { PortfolioGalleriesSetup } from '@/components/admin/PortfolioGalleriesSetup';
@@ -77,6 +78,7 @@ export default async function AdminPage() {
           ))}
         </div>
 
+        <SelectionNotice />
         <section className="mt-12 grid gap-4 lg:grid-cols-3">
           <Link href="/admin/galerias" className="group border border-gold bg-gold p-7 text-ink transition-colors hover:bg-transparent hover:text-gold">
             <p className="text-xs uppercase tracking-[0.2em]">Ação principal</p>

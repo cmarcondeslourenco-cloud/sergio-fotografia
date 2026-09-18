@@ -41,6 +41,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl());
   }
 
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).maybeSingle();
+  if (!profile || !['admin', 'editor'].includes(profile.role)) {
+    return new NextResponse('Acesso restrito ao fotógrafo.', { status: 403, headers: { 'Cache-Control': 'no-store' } });
+  }
+
   return response;
 }
 

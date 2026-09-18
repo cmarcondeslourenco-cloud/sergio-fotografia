@@ -28,16 +28,15 @@ export async function DELETE(request: Request) {
     .eq('gallery_id', gallery.id);
   if (photosError) return NextResponse.json({ error: 'Não foi possível preparar a exclusão das fotos.' }, { status: 502 });
 
+  const { error: galleryError } = await admin.from('galleries').delete().eq('id', gallery.id);
+  if (galleryError) return NextResponse.json({ error: 'Não foi possível excluir. Galerias com fotos vinculadas a pedidos devem ser preservadas.' }, { status: 409 });
+
   const storagePaths = [...new Set((photos ?? []).flatMap((photo) => [photo.storage_path, photo.path_thumbnail, photo.path_preview, photo.path_web, photo.path_watermark]).filter((path): path is string => Boolean(path)))];
   if (storagePaths.length) {
     const { error: storageError } = await admin.storage.from('photos-private').remove(storagePaths);
-    if (storageError) return NextResponse.json({ error: 'Não foi possível remover os arquivos privados da galeria.' }, { status: 502 });
+    if (storageError) return NextResponse.json({ error: 'Galeria removida; arquivos privados remanescentes precisam de limpeza no Storage.' }, { status: 502 });
   }
 
-  const { error: commentsError } = await admin.from('comments').delete().eq('gallery_id', gallery.id);
-  if (commentsError) return NextResponse.json({ error: 'Não foi possível remover os comentários da galeria.' }, { status: 502 });
-  const { error: galleryError } = await admin.from('galleries').delete().eq('id', gallery.id);
-  if (galleryError) return NextResponse.json({ error: 'Não foi possível excluir a galeria.' }, { status: 502 });
 
   return NextResponse.json({ ok: true });
 }

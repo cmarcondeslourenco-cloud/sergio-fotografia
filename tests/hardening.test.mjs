@@ -40,7 +40,9 @@ test('Home concentra os CTAs e os filtros do portfólio', async () => {
   const home = await readFile('app/page.tsx', 'utf8');
   const portfolio = await readFile('app/portfolio/page.tsx', 'utf8');
   assert.match(home, /href="\/contato"/);
-  assert.match(home, /href="\/cliente"/);
+  const hero = await readFile('components/home/AnimatedHero.tsx', 'utf8');
+  assert.match(home, /<AnimatedHero/);
+  assert.match(hero, /href="\/cliente"/);
   assert.match(home, /Todos/);
   assert.match(home, /Casamentos/);
   assert.match(home, /Ensaios/);

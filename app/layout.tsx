@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { BackButton } from '@/components/layout/BackButton';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Pular para o conteúdo
         </a>
         <SiteHeader />
+        <BackButton />
         {children}
         <SiteFooter />
       </body>

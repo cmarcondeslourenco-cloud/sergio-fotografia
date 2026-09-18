@@ -12,10 +12,14 @@ export async function POST(request: Request) {
   const { data: profile } = await sessionClient.from('profiles').select('role').eq('id', user.id).single();
   if (!profile || !['admin', 'editor'].includes(profile.role)) return NextResponse.json({ error: 'Sem permissão.' }, { status: 403 });
 
-  const body = await request.json().catch(() => null) as { galleryId?: unknown; action?: unknown } | null;
+  const body = await request.json().catch(() => null) as { galleryId?: unknown; action?: unknown; expiresAt?: unknown } | null;
   if (!body || typeof body.galleryId !== 'string' || !uuidPattern.test(body.galleryId)) {
     return NextResponse.json({ error: 'Galeria inválida.' }, { status: 400 });
   }
+
+  if (!['create', 'regenerate', 'revoke'].includes(String(body.action))) return NextResponse.json({ error: 'Ação inválida.' }, { status: 400 });
+  const expiration = body.expiresAt == null ? null : typeof body.expiresAt === 'string' ? new Date(body.expiresAt) : new Date(NaN);
+  if (expiration && (!Number.isFinite(expiration.getTime()) || expiration <= new Date())) return NextResponse.json({ error: 'Informe uma expiração futura.' }, { status: 400 });
 
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: 'Supabase não configurado.' }, { status: 503 });
@@ -28,15 +32,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  if (body.action === 'regenerate') {
-    const { error: revokeError } = await admin.from('gallery_access').delete().eq('gallery_id', body.galleryId);
-    if (revokeError) return NextResponse.json({ error: 'Não foi possível invalidar o acesso anterior.' }, { status: 502 });
-  }
-
-  const { data, error } = await admin.from('gallery_access').insert({ gallery_id: body.galleryId }).select('token').single();
+  // Replacement and revocation happen in one transaction; failure keeps the old link.
+  const { data, error } = await admin.rpc('rotate_gallery_access', { p_gallery: body.galleryId, p_expires: expiration?.toISOString() ?? null, p_replace: body.action === 'regenerate' });
   if (error || !data) {
     if (error) console.error('Falha ao gerar acesso da galeria', { code: error.code });
     return NextResponse.json({ error: 'Não foi possível gerar o acesso.' }, { status: 502 });
   }
-  return NextResponse.json({ token: data.token }, { status: 201 });
+  return NextResponse.json({ token: data }, { status: 201 });
 }

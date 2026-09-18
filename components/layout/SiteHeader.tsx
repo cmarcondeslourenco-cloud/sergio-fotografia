@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 const links = [
   { href: '/portfolio', label: 'Portfólio' },
+  { href: '/loja', label: 'Loja' },
   { href: '/sobre', label: 'Sobre' },
   { href: '/contato', label: 'Contato' },
   { href: '/cliente', label: 'Área do cliente' },

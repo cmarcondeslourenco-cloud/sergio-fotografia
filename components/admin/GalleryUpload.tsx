@@ -17,7 +17,8 @@ export function GalleryUpload({ galleryId, maxPhotos, initialPhotoCount = 0 }: {
     try {
       const availableSlots = maxPhotos === undefined ? Infinity : Math.max(0, maxPhotos - initialPhotoCount);
       if (chosen.length > availableSlots) throw new Error(`Esta galeria permite no máximo ${maxPhotos} imagens. Restam ${availableSlots} vaga(s).`);
-      chosen.forEach((file) => validateImageInput({ mime: file.type, size: file.size }));
+      chosen.forEach((file) => validateImageInput({ mime: file.type, size: file.size, filename: file.name }));
+      if (new Set(chosen.map(file => file.name.toLowerCase())).size !== chosen.length) throw new Error('Existem nomes de arquivos repetidos na seleção.');
       setFiles(chosen);
       setStatus('');
       setProgress(0);
@@ -43,6 +44,9 @@ export function GalleryUpload({ galleryId, maxPhotos, initialPhotoCount = 0 }: {
     let uploadedCount = 0;
 
     try {
+      const existing = await client.from('photos').select('filename').eq('gallery_id', galleryId).in('filename', files.map(file => file.name));
+      if (existing.error) throw new Error('Não foi possível verificar arquivos duplicados.');
+      if (existing.data?.length) throw new Error('Um arquivo com este nome já existe na galeria. Renomeie antes de enviar.');
       const existingCover = await client.from('photos').select('id').eq('gallery_id', galleryId).eq('is_cover', true).limit(1);
       const existingFeatured = await client.from('photos').select('id').eq('gallery_id', galleryId).eq('is_featured', true).limit(5);
       let needsCover = !existingCover.data?.length;
@@ -72,7 +76,10 @@ export function GalleryUpload({ galleryId, maxPhotos, initialPhotoCount = 0 }: {
           is_featured: featuredSlots > 0,
           sort_order: index,
         });
-        if (inserted.error) throw new Error(`O arquivo ${file.name} foi enviado, mas não pôde ser cadastrado.`);
+        if (inserted.error) {
+          const cleanup = await client.storage.from('photos-private').remove([path]);
+          throw new Error(cleanup.error ? `O arquivo ${file.name} não pôde ser cadastrado e permanece no Storage para conferência.` : `Não foi possível cadastrar ${file.name}; envio desfeito.`);
+        }
 
         needsCover = false;
         featuredSlots = Math.max(0, featuredSlots - 1);

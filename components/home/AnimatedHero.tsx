@@ -53,7 +53,7 @@ export function AnimatedHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[86%_center] sm:object-[76%_center] md:object-[68%_center]"
+          className="object-cover object-[82%_center] sm:object-[72%_center] md:object-[62%_center]"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/45 to-black/10" />

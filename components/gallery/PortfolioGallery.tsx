@@ -9,8 +9,8 @@ export async function PortfolioGallery({ slug, fallback, showAllPhotos = false }
   noStore();
   const admin = createSupabaseAdminClient();
   if (!admin) return <>{fallback}</>;
-  const { data: gallery } = await admin.from('galleries').select('id').eq('slug', slug).eq('visibility', 'public').lte('published_at', new Date().toISOString()).maybeSingle();
-  if (!gallery) return <>{fallback}</>;
+  const { data: gallery } = await admin.from('galleries').select('*').eq('slug', slug).eq('visibility', 'public').lte('published_at', new Date().toISOString()).maybeSingle();
+  if (!gallery || gallery.active === false) return <>{fallback}</>;
   const { data: photos } = await admin.from('photos').select('id,filename,path_preview,is_featured').eq('gallery_id', gallery.id).eq('processing_status', 'done').order('sort_order').limit(portfolioMaxGalleryPhotos);
   const materialized = await Promise.all((photos ?? []).map(async (photo) => {
     if (!photo.path_preview) return null;

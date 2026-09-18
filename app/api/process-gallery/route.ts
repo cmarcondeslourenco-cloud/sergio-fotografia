@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
   const { data: photos, error } = await admin
     .from('photos')
-    .select('id,storage_path,format,size_bytes')
+    .select('id,filename,storage_path,format,size_bytes')
     .eq('gallery_id', body.galleryId)
     .in('processing_status', ['pending', 'error'])
     .order('created_at')
@@ -44,10 +44,11 @@ export async function POST(request: Request) {
     try {
       const downloaded = await admin.storage.from('photos-private').download(photo.storage_path);
       if (downloaded.error) throw new Error('download');
-      validateImageInput({ mime: downloaded.data.type || `image/${photo.format}`, size: downloaded.data.size || photo.size_bytes || 0 });
+      validateImageInput({ mime: downloaded.data.type || `image/${photo.format}`, size: downloaded.data.size || photo.size_bytes || 0, filename: photo.filename });
 
       const input = Buffer.from(await downloaded.data.arrayBuffer());
       const metadata = await readImageMetadata(input);
+      if (!['jpeg','png','webp'].includes(metadata.format ?? '')) throw new Error('Formato real não autorizado.');
       const paths: Record<string, string> = {};
       for (const variant of ['thumbnail', 'preview', 'web'] as const) {
         const output = await createImageVariant(input, variant);
