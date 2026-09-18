@@ -71,13 +71,6 @@ export function GalleryPhotos({
     const result = await response.json().catch(() => ({}));
     if (response.ok) {
       setPhotos((current) => current.map((item) => item.id === photo.id ? { ...item, published: !photo.published, is_featured: photo.published ? false : item.is_featured } : item));
-      if (photo.published && photo.is_featured) {
-        await fetch('/api/admin/gallery-featured', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ galleryId, photoId: photo.id, featured: false }),
-        });
-      }
       setStatus(photo.published ? 'Fotografia ocultada da área pública.' : 'Fotografia ativada para exibição pública.');
     } else {
       setStatus(`Erro: ${result.error ?? 'Não foi possível alterar a disponibilidade.'}`);
