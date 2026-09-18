@@ -1,3 +1,0 @@
-import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-export default function DesignSystemPage() { return <main id="conteudo-principal" className="min-h-screen py-32"><Container><SectionHeading eyebrow="Sistema visual" title="Design system base" /><div className="mt-12 grid gap-6 md:grid-cols-4"><div className="h-32 bg-ink p-4 text-xs">Background<br />#090908</div><div className="h-32 bg-surface p-4 text-xs">Surface<br />#151512</div><div className="h-32 bg-surface-2 p-4 text-xs">Elevação<br />#1D1C18</div><div className="h-32 bg-gold p-4 text-ink">Accent<br />#D0AD72</div></div></Container></main>; }
