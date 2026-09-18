@@ -28,8 +28,9 @@ export function SalesControls({
     if (action === 'cancelled' && !window.confirm('Cancelar este pedido pendente?')) return;
 
     const normalized = value.trim().replace(',', '.');
-    const cents = normalized ? Math.round(Number(normalized) * 100) : null;
-    if (action === 'photo' && normalized && (!Number.isFinite(cents) || cents! < 1)) {
+    const numericPrice = normalized ? Number(normalized) : null;
+    const cents = numericPrice === null ? null : Math.round(numericPrice * 100);
+    if (action === 'photo' && numericPrice !== null && (!Number.isFinite(numericPrice) || cents === null || cents < 1)) {
       setMessage('Informe um preço válido ou deixe o campo vazio para retirar da venda.');
       return;
     }
