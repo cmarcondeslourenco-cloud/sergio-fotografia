@@ -44,7 +44,11 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
           </nav>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:auto-rows-[18rem] lg:grid-cols-4">
-            {visibleCategories.map(({ category, slug }, index) => (
+            {visibleCategories.map(({ category, slug }, index) => {
+              const isStorefront = slug === 'astrofotografia';
+              const destination = isStorefront ? '/loja' : `/${slug}`;
+              const displayTitle = isStorefront ? 'Loja' : category;
+              return (
               <div
                 key={category}
                 className={`group relative overflow-hidden ${
@@ -56,18 +60,19 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
                 }`}
               >
                 <div className="h-full [&>div]:h-full [&>div]:aspect-auto [&_img]:transition [&_img]:duration-700 [&_img]:ease-out [&_img]:group-hover:scale-[1.035]">
-                  <PortfolioGallery slug={slug} fallback={<div className="h-full bg-surface" aria-hidden="true" />} />
+                  <PortfolioGallery slug={slug} saleOnly={isStorefront} fallback={<div className="h-full bg-surface" aria-hidden="true" />} />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold">{String(index + 1).padStart(2, '0')}</p>
-                    <Link href={`/${slug}`} className="mt-2 block font-display text-2xl text-white">{category}</Link>
+                    <Link href={destination} className="mt-2 block font-display text-2xl text-white">{displayTitle}</Link>
                   </div>
-                  <Link href={`/${slug}`} aria-label={`Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
+                  <Link href={destination} aria-label={isStorefront ? 'Abrir loja de fotografias' : `Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
