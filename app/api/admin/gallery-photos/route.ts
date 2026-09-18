@@ -81,7 +81,7 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: 'Dados da fotografia inválidos.' }, { status: 400 });
   }
 
-  const { data, error } = await admin.from('photos').update({ published: body.published }).eq('id', body.photoId).eq('gallery_id', body.galleryId).select('id').maybeSingle();
+  const { data, error } = await admin.from('photos').update({ published: body.published, ...(body.published ? {} : { is_featured: false }) }).eq('id', body.photoId).eq('gallery_id', body.galleryId).select('id').maybeSingle();
   if (error || !data) return NextResponse.json({ error: 'Não foi possível alterar a disponibilidade da fotografia.' }, { status: 409 });
   return NextResponse.json({ ok: true });
 }
