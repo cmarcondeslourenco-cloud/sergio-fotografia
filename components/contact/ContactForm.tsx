@@ -28,7 +28,7 @@ export function ContactForm() {
       if (!response.ok) throw new Error(result.error ?? 'Não foi possível enviar agora.');
       form.reset();
       setState('success');
-      setMessage('Mensagem recebida. Obrigado por compartilhar sua história.');
+      setMessage('Mensagem recebida e sinalizada para o fotógrafo. Obrigado por compartilhar sua história.');
     } catch (error) {
       setState('error');
       setMessage(error instanceof Error ? error.message : 'Não foi possível enviar agora.');

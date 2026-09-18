@@ -21,13 +21,23 @@ export function RealClientGallery({
   token,
   downloadsEnabled = true,
   allowOriginalDownload = true,
+  initialFavorites = [],
+  favoritesEnabled = true,
+  downloadEndpoint = '/api/client-download',
 }: {
   photos: Photo[];
   token: string;
   downloadsEnabled?: boolean;
   allowOriginalDownload?: boolean;
+  initialFavorites?: string[];
+  favoritesEnabled?: boolean;
+  downloadEndpoint?: string;
 }) {
   const [selected, setSelected] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>(initialFavorites);
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [name, setName] = useState('');
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
   const [downloading, setDownloading] = useState(false);
   const [message, setMessage] = useState('');
@@ -44,7 +54,7 @@ export function RealClientGallery({
     setMessageType('progress');
     setMessage('Preparando os arquivos originais…');
     try {
-      const response = await fetch('/api/client-download', {
+      const response = await fetch(downloadEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, photoIds }),
@@ -78,6 +88,19 @@ export function RealClientGallery({
     alt: photos[activePhoto].alt,
     caption: photos[activePhoto].alt,
   };
+
+  async function saveFavorites(next: string[], finalize = false) {
+    setSaving(true);
+    try {
+      const response = await fetch('/api/client-selection', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, photoIds: next, name, finalize }) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Não foi possível salvar.');
+      setFavorites(next);
+      setMessageType('success');
+      setMessage(finalize ? 'Seleção enviada ao fotógrafo.' : 'Favoritos salvos.');
+    } catch (error) { setMessageType('error'); setMessage(error instanceof Error ? error.message : 'Falha ao salvar.'); }
+    finally { setSaving(false); }
+  }
 
   return (
     <div>
@@ -119,10 +142,17 @@ export function RealClientGallery({
         )}
       </div>
 
+      {favoritesEnabled && <section className="mb-8 flex flex-wrap items-end gap-3 border border-white/10 p-5" aria-label="Favoritos">
+        <button className="button-secondary" aria-pressed={onlyFavorites} onClick={() => setOnlyFavorites(!onlyFavorites)}>{onlyFavorites ? 'Ver todas' : `♥ Apenas favoritas (${favorites.length})`}</button>
+        <label className="text-sm">Seu nome<input className="field mt-2" value={name} onChange={event => setName(event.target.value)} maxLength={120} autoComplete="name" /></label>
+        <button className="button-primary" disabled={saving || !favorites.length || name.trim().length < 2} onClick={() => saveFavorites(favorites, true)}>Finalizar seleção</button>
+      </section>}
+
       {photos.length ? (
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
           {photos.map((photo, index) => (
-            <figure key={photo.id} className={`group relative mb-4 break-inside-avoid overflow-hidden bg-surface ${selectedSet.has(photo.id) ? 'ring-2 ring-gold ring-offset-2 ring-offset-ink' : ''}`}>
+            <figure hidden={onlyFavorites && !favorites.includes(photo.id)} key={photo.id} className={`group relative mb-4 break-inside-avoid overflow-hidden bg-surface ${selectedSet.has(photo.id) ? 'ring-2 ring-gold ring-offset-2 ring-offset-ink' : ''}`}>
+              {favoritesEnabled && <button disabled={saving} aria-pressed={favorites.includes(photo.id)} aria-label={`Favoritar ${photo.alt}`} onClick={() => saveFavorites(favorites.includes(photo.id) ? favorites.filter(id => id !== photo.id) : [...favorites, photo.id])} className="absolute left-3 top-3 z-10 bg-black/80 px-3 py-2 text-gold">{favorites.includes(photo.id) ? '♥' : '♡'}</button>}
               <button type="button" className="block w-full" onClick={() => setActivePhoto(index)} aria-label={`Ampliar ${photo.alt}`}>
                 <Image src={photo.previewUrl} alt={photo.alt} width={1200} height={800} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="h-auto w-full transition duration-500 group-hover:scale-[1.015]" unoptimized />
               </button>

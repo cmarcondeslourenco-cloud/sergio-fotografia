@@ -26,6 +26,30 @@ test('contato possui validação, honeypot e limite de envio', async () => {
   assert.match(route, /contactSchema\.safeParse/);
 });
 
+test('acesso de galeria permite regenerar e revogar sem expor chaves', async () => {
+  const route = await readFile('app/api/admin/gallery-access/route.ts', 'utf8');
+  const settings = await readFile('components/admin/GalleryDeliverySettings.tsx', 'utf8');
+  assert.match(route, /action === 'revoke'/);
+  assert.match(route, /action === 'regenerate'/);
+  assert.match(route, /gallery_access.*delete/s);
+  assert.match(settings, /navigator\.clipboard\.writeText/);
+  assert.doesNotMatch(route, /SUPABASE_SERVICE_ROLE_KEY/);
+});
+
+test('Home concentra os CTAs e os filtros do portfólio', async () => {
+  const home = await readFile('app/page.tsx', 'utf8');
+  const portfolio = await readFile('app/portfolio/page.tsx', 'utf8');
+  assert.match(home, /href="\/contato"/);
+  const hero = await readFile('components/home/AnimatedHero.tsx', 'utf8');
+  assert.match(home, /<AnimatedHero/);
+  assert.match(hero, /href="\/cliente"/);
+  assert.match(home, /Todos/);
+  assert.match(home, /Casamentos/);
+  assert.match(home, /Ensaios/);
+  assert.match(home, /Eventos/);
+  assert.match(portfolio, /redirect\('\/#portfolio'\)/);
+});
+
 test('ativos editoriais existem e imagens do equipamento saíram da pasta pública', async () => {
   await Promise.all([
     access('public/editorial/casamento-hero.webp'),
@@ -34,6 +58,22 @@ test('ativos editoriais existem e imagens do equipamento saíram da pasta públi
     access('public/editorial/astrofotografia.webp'),
   ]);
   await assert.rejects(access('public/demo/01.webp'));
+});
+
+test('home e categorias usam a mesma fonte de galerias publicas', async () => {
+  const home = await readFile('app/page.tsx', 'utf8');
+  const landing = await readFile('components/gallery/CategoryLanding.tsx', 'utf8');
+  const gallery = await readFile('components/gallery/PortfolioGallery.tsx', 'utf8');
+
+  assert.match(home, /portfolioGalleries/);
+  assert.match(home, /<PortfolioGallery slug={slug}/);
+  assert.doesNotMatch(home, /demoPhotos/);
+  assert.match(home, /href=\{`\/\$\{slug\}`\}/);
+  assert.match(landing, /<PortfolioGallery slug={slug} showAllPhotos/);
+  assert.doesNotMatch(landing, /DemoGallery|demoPhotos/);
+  assert.doesNotMatch(gallery, /\.eq\('published', true\)/);
+  assert.match(gallery, /noStore\(\)/);
+  assert.match(gallery, /showAllPhotos \? 'grid gap-12' : 'h-full'/);
 });
 
 test('lightbox restaura foco e impede rolagem ao abrir', async () => {

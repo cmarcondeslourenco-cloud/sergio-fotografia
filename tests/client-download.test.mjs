@@ -10,7 +10,8 @@ test('download do cliente preserva o original e protege o lote', async () => {
   assert.match(route, /download_resolution/);
   assert.match(route, /gallery_id/);
   assert.match(route, /session_token/);
-  assert.match(route, /level: 0/);
-  assert.match(route, /new Uint8Array/);
+  const archive = await readFile('lib/storage/archive.mjs', 'utf8');
+  assert.match(archive, /level: 0/);
+  assert.match(route, /originalZip/);
   assert.doesNotMatch(gallery, /createSignedUrl\(photo\.storage_path/);
 });

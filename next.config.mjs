@@ -2,11 +2,9 @@
 const nextConfig = {
   poweredByHeader: false,
   distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
-  experimental: {
-    serverComponentsExternalPackages: ['archiver'],
-  },
+  serverExternalPackages: ['archiver'],
   images: {
-    // Mitigação temporária: evita o Image Optimizer do Next 14 até a atualização principal auditada.
+    // Previews já são gerados pelo pipeline Sharp; preservar o fluxo existente.
     unoptimized: true,
     remotePatterns: (() => {
       try {
@@ -18,7 +16,7 @@ const nextConfig = {
     })(),
   },
   async headers() {
-    return [{
+    return [{ source: '/c/:path*', headers: [{ key: 'Referrer-Policy', value: 'no-referrer' }, { key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }, { source: '/pedido/:path*', headers: [{ key: 'Referrer-Policy', value: 'no-referrer' }, { key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }, {
       source: '/:path*',
       headers: [
         { key: 'X-Content-Type-Options', value: 'nosniff' },

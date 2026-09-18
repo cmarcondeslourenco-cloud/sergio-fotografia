@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Sobre',
@@ -22,10 +21,7 @@ export default function AboutPage() {
             <p>Fotografar é prestar atenção. É reconhecer o gesto pequeno, a luz que dura poucos segundos e a emoção que não precisa ser dirigida.</p>
             <p>Este espaço foi preparado para apresentar um trabalho autoral com calma e para entregar cada história com a mesma delicadeza com que ela foi registrada.</p>
           </div>
-          <div className="mt-8 border-l border-gold pl-6 text-sm leading-7 text-zinc-500">
-            A biografia, o nome profissional e os dados reais do fotógrafo permanecem intencionalmente editáveis até serem fornecidos e aprovados.
-          </div>
-          <Link className="button-primary mt-9" href="/contato">Contar sua história</Link>
+          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-zinc-600">Dedicatória · Cleber Marcondes</p>
         </div>
       </div>
     </main>
