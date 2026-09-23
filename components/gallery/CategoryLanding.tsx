@@ -3,7 +3,7 @@ import { PortfolioGallery } from './PortfolioGallery';
 import type { PortfolioCategory } from '@/lib/demo-photos';
 
 export function CategoryLanding({ category, title, description }: { category: PortfolioCategory; title: string; description: string }) {
-  const slug = category === 'Astrofotografia' ? 'astrofotografia' : category.toLowerCase();
+  const slug = category === 'Loja' ? 'loja' : category.toLowerCase();
   return (
     <main id="conteudo-principal" className="min-h-screen px-6 pb-24 pt-32 md:px-10 md:pt-40">
       <div className="mx-auto max-w-7xl">

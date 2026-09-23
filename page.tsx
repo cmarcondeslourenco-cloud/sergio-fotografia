@@ -12,7 +12,7 @@ const principles = [
   ['03', 'Memória em alta qualidade', 'Originais preservados e uma experiência responsiva em qualquer tela.'],
 ];
 
-const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Astrofotografia'];
+const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Loja'];
 
 export default async function HomePage({ searchParams: promisedSearchParams }: { searchParams?: Promise<{ categoria?: string }> }) {
   const searchParams = await promisedSearchParams;

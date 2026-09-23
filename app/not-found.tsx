@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function NotFoundPage() {
   return (
     <main id="conteudo-principal" className="relative grid min-h-[100svh] place-items-center overflow-hidden px-6 py-32 text-center">
-      <Image src="/editorial/astrofotografia.webp" alt="" fill sizes="100vw" className="object-cover opacity-35" />
+      <Image src="/editorial/loja.webp" alt="" fill sizes="100vw" className="object-cover opacity-35" />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/75 to-ink" />
       <div className="relative max-w-2xl">
         <p className="eyebrow">Erro 404</p>
