@@ -93,7 +93,6 @@ export function AnimatedHero() {
             Instagram · @sergiopagliarinifotografia
           </motion.a>
         </div>
-        <motion.p variants={revealItem} className="mt-12 text-[10px] uppercase tracking-[0.2em] text-white/55">Imagem conceitual de demonstração</motion.p>
       </motion.div>
     </section>
   );
