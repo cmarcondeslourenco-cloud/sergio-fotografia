@@ -77,7 +77,7 @@ export function AnimatedHero() {
               sizes="(min-width: 768px) 34rem, calc(100vw - 3rem)"
             />
           </motion.div>
-          <motion.p variants={revealItem} className="eyebrow">Fotografia · Histórias · Momentos</motion.p>
+          <motion.p variants={revealItem} className="eyebrow">Fotografia · Memórias · Momentos</motion.p>
           <motion.h1 variants={revealItem} className="mt-5 font-display text-5xl leading-[0.96] text-linen sm:text-6xl md:text-8xl lg:text-9xl">
             O instante passa.
             <span className="block italic text-gold">A história fica.</span>
