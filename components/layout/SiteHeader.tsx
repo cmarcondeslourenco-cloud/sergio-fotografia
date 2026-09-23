@@ -5,7 +5,7 @@ const links = [
   { href: '/portfolio', label: 'Portfólio' },
   { href: '/loja', label: 'Loja' },
   { href: '/sobre', label: 'Sobre' },
-  { href: '/contato', label: 'Contato' },
+  { href: 'https://wa.me/5544998061806', label: 'Contato', external: true },
   { href: '/cliente', label: 'Área do cliente' },
 ];
 

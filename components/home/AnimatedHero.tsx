@@ -86,7 +86,7 @@ export function AnimatedHero() {
             Fotografia sensível para celebrar pessoas, encontros e tudo aquilo que merece ser lembrado.
           </motion.p>
           <motion.div variants={revealItem} className="mt-9 flex flex-wrap gap-3">
-            <Link className="button-primary" href="/contato">Contato</Link>
+            <Link className="button-primary" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Contato</Link>
             <Link className="button-secondary bg-black/20 backdrop-blur-sm" href="/cliente">Área do cliente</Link>
           </motion.div>
           <motion.a variants={revealItem} href="https://www.instagram.com/sergiopagliarinifotografia/" target="_blank" rel="noreferrer" className="mt-6 inline-flex text-xs uppercase tracking-[0.16em] text-white/70 transition hover:text-gold">

@@ -15,7 +15,7 @@ export function CategoryLanding({ category, title, description }: { category: Po
         </section>
         <div className="mt-12 flex flex-wrap gap-3 border-t border-white/10 pt-8">
           <Link className="button-secondary" href="/portfolio">Ver todo o portfólio</Link>
-          <Link className="button-primary" href="/contato">Conversar sobre seu projeto</Link>
+          <Link className="button-primary" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Conversar sobre seu projeto</Link>
         </div>
       </div>
     </main>
