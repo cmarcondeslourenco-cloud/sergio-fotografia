@@ -7,9 +7,9 @@ import { portfolioGalleries } from '@/lib/portfolio/config';
 const homeCategories: Array<{ category: PortfolioCategory; slug: string }> = portfolioGalleries.map(({ title, slug }) => ({ category: title, slug }));
 
 const principles = [
-  ['01', 'Presença antes da pose', 'Direção leve para que pessoas e histórias continuem reconhecíveis nas imagens.'],
-  ['02', 'Entrega sem atrito', 'Galerias privadas organizadas para selecionar, rever e baixar com tranquilidade.'],
-  ['03', 'Memória em alta qualidade', 'Originais preservados e uma experiência responsiva em qualquer tela.'],
+  ['01', 'Presença antes da pose', 'Direção leve para que as pessoas e as histórias continuem reconhecíveis nas imagens.'],
+  ['02', 'Entrega estilizada', 'Galerias privadas e organizadas para rever, selecionar e baixar com tranquilidade.'],
+  ['03', 'Memórias em alta qualidade', 'Os arquivos originais são preservados, tenha uma experiência responsiva em qualquer tela.'],
 ];
 
 const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Loja'];
@@ -76,7 +76,7 @@ Voce merece ter Imagens e momentos em alta qualidade.
 
       <section className="border-y border-white/10 bg-surface px-6 py-24 md:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="eyebrow">Uma experiência completa</p>
+          <p className="eyebrow">Tenha uma experiência completa</p>
           <div className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
             {principles.map(([number, title, description]) => (
               <article key={number} className="bg-surface p-7 md:p-9">
