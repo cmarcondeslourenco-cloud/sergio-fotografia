@@ -31,7 +31,9 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
               <h2 className="mt-4 max-w-xl font-display text-4xl leading-tight text-linen md:text-6xl">Cada encontro pede um olhar diferente.</h2>
             </div>
             <p className="max-w-xl text-base leading-7 text-zinc-400 lg:justify-self-end">
-              Uma narrativa visual construída com espaço, luz e verdade — da celebração mais intensa ao silêncio de um retrato.
+              Histórias construídas com espaço, luz e verdade 
+Da mais intensa celebração ao silêncio de um retrato.
+Voce merece ter Imagens e momentos em alta qualidade.
             </p>
           </div>
 
