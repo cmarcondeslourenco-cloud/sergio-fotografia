@@ -83,7 +83,7 @@ export function AnimatedHero() {
             <span className="block italic text-gold">A história fica.</span>
           </motion.h1>
           <motion.p variants={revealItem} className="mt-7 max-w-xl text-base leading-7 text-zinc-200 md:text-lg">
-            Fotografia sensível para celebrar pessoas, encontros e tudo aquilo que merece ser lembrado.
+            O melhor em Fotografia para celebrar as pessoas, os encontros e tudo aquilo que merece ser lembrado.
           </motion.p>
           <motion.div variants={revealItem} className="mt-9 flex flex-wrap gap-3">
             <Link className="button-primary" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Contato</Link>
