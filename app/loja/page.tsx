@@ -3,7 +3,7 @@ import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 export const dynamic = 'force-dynamic';
 export default async function ShopPage() {
   const admin = createSupabaseAdminClient();
-  const result = admin ? await admin.from('photos').select('id,filename,caption,path_preview,price_cents,galleries!inner(active,visibility,published_at)').gt('price_cents', 0).eq('published', true).eq('processing_status', 'done').eq('galleries.active', true).eq('galleries.visibility', 'public').lte('galleries.published_at', new Date().toISOString()).order('created_at', { ascending: false }).limit(500) : null;
+  const result = admin ? await admin.from('photos').select('id,filename,caption,path_preview,price_cents,galleries!inner(active,visibility,published_at)').gt('price_cents', 0).eq('published', true).eq('processing_status', 'done').eq('galleries.active', true).eq('galleries.slug', 'venda-fotos').eq('galleries.visibility', 'public').lte('galleries.published_at', new Date().toISOString()).order('created_at', { ascending: false }).limit(500) : null;
   const photos = (await Promise.all((result?.data ?? []).map(async photo => {
     if (!photo.path_preview) return null;
     const signed = await admin!.storage.from('photos-private').createSignedUrl(photo.path_preview, 3600);
