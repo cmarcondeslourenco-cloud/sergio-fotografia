@@ -7,12 +7,12 @@ import { portfolioGalleries } from '@/lib/portfolio/config';
 const homeCategories: Array<{ category: PortfolioCategory; slug: string }> = portfolioGalleries.map(({ title, slug }) => ({ category: title, slug }));
 
 const principles = [
-  ['01', 'Presença antes da pose', 'Direção leve para que pessoas e histórias continuem reconhecíveis nas imagens.'],
-  ['02', 'Entrega sem atrito', 'Galerias privadas organizadas para selecionar, rever e baixar com tranquilidade.'],
-  ['03', 'Memória em alta qualidade', 'Originais preservados e uma experiência responsiva em qualquer tela.'],
+  ['01', 'Presença antes da pose', 'Direção leve para que as pessoas e as histórias continuem reconhecíveis nas imagens.'],
+  ['02', 'Entrega estilizada', 'Galerias privadas e organizadas para rever, selecionar e baixar com tranquilidade.'],
+  ['03', 'Memórias em alta qualidade', 'Os arquivos originais são preservados, tenha uma experiência responsiva em qualquer tela.'],
 ];
 
-const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Astrofotografia'];
+const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Loja'];
 
 export default async function HomePage({ searchParams: promisedSearchParams }: { searchParams?: Promise<{ categoria?: string }> }) {
   const searchParams = await promisedSearchParams;
@@ -31,7 +31,9 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
               <h2 className="mt-4 max-w-xl font-display text-4xl leading-tight text-linen md:text-6xl">Cada encontro pede um olhar diferente.</h2>
             </div>
             <p className="max-w-xl text-base leading-7 text-zinc-400 lg:justify-self-end">
-              Uma narrativa visual construída com espaço, luz e verdade — da celebração mais intensa ao silêncio de um retrato.
+              Histórias construídas com espaço, luz e verdade 
+Da mais intensa celebração ao silêncio de um retrato.
+Voce merece ter Imagens e momentos em alta qualidade.
             </p>
           </div>
 
@@ -62,9 +64,9 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold">{String(index + 1).padStart(2, '0')}</p>
-                    <Link href={`/${slug}`} className="mt-2 block font-display text-2xl text-white">{category}</Link>
+                    <Link href={slug === 'venda-fotos' ? '/loja' : `/${slug}`} className="mt-2 block font-display text-2xl text-white">{category}</Link>
                   </div>
-                  <Link href={`/${slug}`} aria-label={`Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
+                  <Link href={slug === 'venda-fotos' ? '/loja' : `/${slug}`} aria-label={`Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
                 </div>
               </div>
             ))}
@@ -74,7 +76,7 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
 
       <section className="border-y border-white/10 bg-surface px-6 py-24 md:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="eyebrow">Uma experiência completa</p>
+          <p className="eyebrow">Tenha uma experiência completa</p>
           <div className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
             {principles.map(([number, title, description]) => (
               <article key={number} className="bg-surface p-7 md:p-9">
@@ -92,7 +94,7 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
           <p className="eyebrow">Vamos criar memória</p>
           <h2 className="mt-5 font-display text-4xl leading-tight text-linen md:text-6xl">Sua história merece ser sentida outra vez.</h2>
           <p className="mx-auto mt-6 max-w-xl leading-7 text-zinc-400">Conte um pouco sobre o momento que você está planejando. A conversa começa sem compromisso.</p>
-          <Link className="button-primary mt-9" href="/contato">Iniciar uma conversa</Link>
+          <Link className="button-primary mt-9" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Iniciar uma conversa</Link>
         </div>
       </section>
     </main>

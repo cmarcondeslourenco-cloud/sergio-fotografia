@@ -77,23 +77,22 @@ export function AnimatedHero() {
               sizes="(min-width: 768px) 34rem, calc(100vw - 3rem)"
             />
           </motion.div>
-          <motion.p variants={revealItem} className="eyebrow">Fotografia · Histórias · Momentos</motion.p>
+          <motion.p variants={revealItem} className="eyebrow">Fotografia · Memórias · Momentos</motion.p>
           <motion.h1 variants={revealItem} className="mt-5 font-display text-5xl leading-[0.96] text-linen sm:text-6xl md:text-8xl lg:text-9xl">
             O instante passa.
             <span className="block italic text-gold">A história fica.</span>
           </motion.h1>
           <motion.p variants={revealItem} className="mt-7 max-w-xl text-base leading-7 text-zinc-200 md:text-lg">
-            Fotografia sensível para celebrar pessoas, encontros e tudo aquilo que merece ser lembrado.
+            O melhor em Fotografia para celebrar as pessoas, os encontros e tudo aquilo que merece ser lembrado.
           </motion.p>
           <motion.div variants={revealItem} className="mt-9 flex flex-wrap gap-3">
-            <Link className="button-primary" href="/contato">Contato</Link>
+            <Link className="button-primary" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Contato</Link>
             <Link className="button-secondary bg-black/20 backdrop-blur-sm" href="/cliente">Área do cliente</Link>
           </motion.div>
           <motion.a variants={revealItem} href="https://www.instagram.com/sergiopagliarinifotografia/" target="_blank" rel="noreferrer" className="mt-6 inline-flex text-xs uppercase tracking-[0.16em] text-white/70 transition hover:text-gold">
             Instagram · @sergiopagliarinifotografia
           </motion.a>
         </div>
-        <motion.p variants={revealItem} className="mt-12 text-[10px] uppercase tracking-[0.2em] text-white/55">Imagem conceitual de demonstração</motion.p>
       </motion.div>
     </section>
   );

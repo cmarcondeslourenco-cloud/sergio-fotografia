@@ -12,7 +12,7 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Links do rodapé" className="flex flex-wrap gap-x-6 gap-y-3 uppercase tracking-[0.12em]">
           <Link className="hover:text-gold" href="/portfolio">Portfólio</Link>
-          <Link className="hover:text-gold" href="/contato">Contato</Link>
+          <Link className="hover:text-gold" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Contato</Link>
           <Link className="hover:text-gold" href="/politica-de-privacidade">Privacidade</Link>
           <Link className="hover:text-gold" href="/termos-de-uso">Termos</Link>
         </nav>

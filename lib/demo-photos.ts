@@ -1,4 +1,4 @@
-export type PortfolioCategory = 'Casamentos' | 'Ensaios' | 'Eventos' | 'Astrofotografia';
+export type PortfolioCategory = 'Casamentos' | 'Ensaios' | 'Eventos' | 'Loja';
 
 export type DemoPhoto = {
   src: string;
@@ -39,10 +39,10 @@ export const demoPhotos: DemoPhoto[] = [
     position: '50% 25%',
   },
   {
-    src: '/editorial/astrofotografia.webp',
-    alt: 'Via Láctea arqueada sobre montanhas e um observador',
-    caption: 'Silêncio sob a Via Láctea',
-    category: 'Astrofotografia',
+    src: '/editorial/loja.webp',
+    alt: 'Fotografias disponíveis na loja',
+    caption: 'Escolha suas fotografias',
+    category: 'Loja',
     width: 1536,
     height: 1024,
     position: 'center',
@@ -53,7 +53,7 @@ export const categorySlugs: Record<PortfolioCategory, string> = {
   Casamentos: 'casamentos',
   Ensaios: 'ensaios',
   Eventos: 'eventos',
-  Astrofotografia: 'astrofotografia',
+  Loja: 'loja',
 };
 
 export function normalizeCategory(value?: string) {

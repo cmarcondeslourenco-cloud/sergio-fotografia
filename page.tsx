@@ -12,7 +12,7 @@ const principles = [
   ['03', 'Memória em alta qualidade', 'Originais preservados e uma experiência responsiva em qualquer tela.'],
 ];
 
-const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Astrofotografia'];
+const portfolioFilters: Array<'Todos' | PortfolioCategory> = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Loja'];
 
 export default async function HomePage({ searchParams: promisedSearchParams }: { searchParams?: Promise<{ categoria?: string }> }) {
   const searchParams = await promisedSearchParams;
@@ -92,7 +92,7 @@ export default async function HomePage({ searchParams: promisedSearchParams }: {
           <p className="eyebrow">Vamos criar memória</p>
           <h2 className="mt-5 font-display text-4xl leading-tight text-linen md:text-6xl">Sua história merece ser sentida outra vez.</h2>
           <p className="mx-auto mt-6 max-w-xl leading-7 text-zinc-400">Conte um pouco sobre o momento que você está planejando. A conversa começa sem compromisso.</p>
-          <Link className="button-primary mt-9" href="/contato">Iniciar uma conversa</Link>
+          <Link className="button-primary mt-9" href="https://wa.me/5544998061806" target="_blank" rel="noreferrer">Iniciar uma conversa</Link>
         </div>
       </section>
     </main>

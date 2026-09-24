@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { DemoGallery } from '@/components/gallery/DemoGallery';
 
-const filters = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Festas', 'Autorais', 'Astrofotografia'];
+const filters = ['Todos', 'Casamentos', 'Ensaios', 'Eventos', 'Festas', 'Autorais', 'Loja'];
 const normalize = (value?: string) => value?.toLowerCase() ?? '';
 
 export default function PortfolioPage({ searchParams }: { searchParams?: { categoria?: string } }) {

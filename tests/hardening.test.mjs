@@ -39,7 +39,7 @@ test('acesso de galeria permite regenerar e revogar sem expor chaves', async () 
 test('Home concentra os CTAs e os filtros do portfólio', async () => {
   const home = await readFile('app/page.tsx', 'utf8');
   const portfolio = await readFile('app/portfolio/page.tsx', 'utf8');
-  assert.match(home, /href="\/contato"/);
+  assert.match(home, /href="https:\/\/wa\.me\/5544998061806"/);
   const hero = await readFile('components/home/AnimatedHero.tsx', 'utf8');
   assert.match(home, /<AnimatedHero/);
   assert.match(hero, /href="\/cliente"/);
@@ -68,10 +68,10 @@ test('home e categorias usam a mesma fonte de galerias publicas', async () => {
   assert.match(home, /portfolioGalleries/);
   assert.match(home, /<PortfolioGallery slug={slug}/);
   assert.doesNotMatch(home, /demoPhotos/);
-  assert.match(home, /href=\{`\/\$\{slug\}`\}/);
+  assert.match(home, /slug === 'venda-fotos' \? '\/loja' : `\/\$\{slug\}`/);
   assert.match(landing, /<PortfolioGallery slug={slug} showAllPhotos/);
   assert.doesNotMatch(landing, /DemoGallery|demoPhotos/);
-  assert.doesNotMatch(gallery, /\.eq\('published', true\)/);
+  assert.match(gallery, /\.eq\('published', true\)/);
   assert.match(gallery, /noStore\(\)/);
   assert.match(gallery, /showAllPhotos \? 'grid gap-12' : 'h-full'/);
 });

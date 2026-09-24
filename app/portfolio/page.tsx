@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Portfólio',
-  description: 'Uma seleção de casamentos, ensaios, eventos e astrofotografia.',
+  description: 'Uma seleção de casamentos, ensaios, eventos e loja.',
 };
 
 export default function PortfolioPage() {

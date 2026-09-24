@@ -2,7 +2,7 @@ export const portfolioGalleries = [
   { slug: 'casamentos', title: 'Casamentos' },
   { slug: 'ensaios', title: 'Ensaios' },
   { slug: 'eventos', title: 'Eventos' },
-  { slug: 'astrofotografia', title: 'Astrofotografia' },
+  { slug: 'venda-fotos', title: 'Loja' },
 ] as const;
 
 export const portfolioGallerySlugs = portfolioGalleries.map((gallery) => gallery.slug);
