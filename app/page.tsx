@@ -64,9 +64,9 @@ Voce merece ter Imagens e momentos em alta qualidade.
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold">{String(index + 1).padStart(2, '0')}</p>
-                    <Link href={`/${slug}`} className="mt-2 block font-display text-2xl text-white">{category}</Link>
+                    <Link href={slug === 'venda-fotos' ? '/loja' : `/${slug}`} className="mt-2 block font-display text-2xl text-white">{category}</Link>
                   </div>
-                  <Link href={`/${slug}`} aria-label={`Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
+                  <Link href={slug === 'venda-fotos' ? '/loja' : `/${slug}`} aria-label={`Ver galeria de ${category}`} className="translate-x-2 text-2xl text-white/70 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">↗</Link>
                 </div>
               </div>
             ))}
