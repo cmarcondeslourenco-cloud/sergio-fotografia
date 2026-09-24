@@ -68,7 +68,7 @@ test('home e categorias usam a mesma fonte de galerias publicas', async () => {
   assert.match(home, /portfolioGalleries/);
   assert.match(home, /<PortfolioGallery slug={slug}/);
   assert.doesNotMatch(home, /demoPhotos/);
-  assert.match(home, /href=\{`\/\$\{slug\}`\}/);
+  assert.match(home, /slug === 'venda-fotos' \? '\/loja' : `\/\$\{slug\}`/);
   assert.match(landing, /<PortfolioGallery slug={slug} showAllPhotos/);
   assert.doesNotMatch(landing, /DemoGallery|demoPhotos/);
   assert.match(gallery, /\.eq\('published', true\)/);
